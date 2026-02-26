@@ -1,4 +1,5 @@
 ﻿using DTO;
+using AppLogic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,23 +9,26 @@ namespace API.Controllers
     [ApiController]
     public class PatientsController : ControllerBase
     {
-        [HttpGet("GetPatient")]
-        public string GetPatient()
+
+        private readonly IPatientManager _patientManager;
+
+        public PatientsController(IPatientManager ipmanager)
         {
-            return "Datos del paciente.";
+            _patientManager = ipmanager;
         }
 
-        [HttpGet("GetAllPatients")]
+
+        [HttpGet("Get")]
+        public string GetPatient()
+        {
+            return _patientManager.GetPatient();
+        }
+
+        [HttpGet("GetAll")]
 
         public List<Patient> GetAllPatient()
         {
-            var patients = new List<Patient>();
-
-            patients.Add(new Patient() { name = "Erick" } );
-            patients.Add(new Patient() { name = "Bryan" } );
-            patients.Add(new Patient() { name = "David" });
-
-            return patients;
+            return _patientManager.GetAllPatient();
 
         }
 
@@ -33,7 +37,7 @@ namespace API.Controllers
         public string GetPatientByDoctor(int pIdDoctor)
         {
 
-            return $"Datos de los pacientes del doctor: {pIdDoctor}.";
+            return _patientManager.GetPatientByDoctor(pIdDoctor);
         }
     }
 }
