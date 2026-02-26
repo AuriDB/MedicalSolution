@@ -20,9 +20,11 @@ namespace AppLogic
         {
             var patients = new List<Patient>();
 
+            /*
             patients.Add(new Patient() { name = "Erick" });
             patients.Add(new Patient() { name = "Bryan" });
             patients.Add(new Patient() { name = "David" });
+            */
 
             return patients;
 

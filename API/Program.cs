@@ -8,8 +8,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IPatientManager, PatientManager>();
+builder.Services.AddSingleton<IAppointmentManager, AppointmentManager>();
+
+// Connector original (HttpClient)
 builder.Services.AddSingleton<IRHConnector, RHConnector>();
-//builder.Services.AddSingleton<IAppointmentManager, AppointmentManager>();
+
+// Connectors nuevos para la práctica
+builder.Services.AddSingleton<IRHRestSharpConnector, RHRestSharpConnector>();
+builder.Services.AddSingleton<IRHFlurConnector, RHFlurConnector>();
 
 
 builder.Services.AddCors(options =>
@@ -31,7 +37,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-else
+else //para que levante la publicación en Azure, ya que el entorno de producción no se detecta correctamente
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
