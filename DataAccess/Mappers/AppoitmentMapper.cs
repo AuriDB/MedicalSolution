@@ -4,7 +4,7 @@ using DTO;
 
 namespace DataAccess.Mappers
 {
-    public class AppointmentMapper : ICrudStatements
+    public class AppointmentMapper : ICrudStatements, IObjectMapper
     {
         public BaseClass BuildObject(Dictionary<string, object> row)
         {

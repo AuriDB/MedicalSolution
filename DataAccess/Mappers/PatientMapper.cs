@@ -4,9 +4,9 @@ using DTO;
 
 namespace DataAccess.Mappers
 {
-    public class PatientMapper : ICrudStatements
+    public class PatientMapper : IObjectMapper, ICrudStatements
     {
-        public BaseClass BuildObject(Dictionary<string, object> row)
+        public BaseClass BuildObject(Dictionary<string, object> row) // metodo singular
         {
             var paciente = new Patient();
             paciente.Id = int.Parse(row[key: "Id"].ToString());
@@ -18,7 +18,7 @@ namespace DataAccess.Mappers
 
         public List<BaseClass> BuildObjects(List<Dictionary<string, object>> rows)
         {
-            var results = new List<BaseClass>();
+            var results = new List<BaseClass>(); //trabajo pesado de construir los objetos
             foreach (var item in rows)
             {
                 var row = BuildObject(item);
