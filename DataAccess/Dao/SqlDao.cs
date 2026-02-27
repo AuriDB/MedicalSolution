@@ -9,8 +9,8 @@ namespace DataAccess.Dao
     public class SqlDao 
     {
 
-
-        private string connectionString = "Server=localhost\\MSSQLSERVER03;Database=MedicalSolutionBD;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = "Server=tcp:app-server-alex.database.windows.net,1433;Initial Catalog=MedicalSolutionBD;Persist Security Info=False;User ID=azeledonov;Password=$Q4w73!K.a;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; // a mi SERVIDOR EN AZURE
+        //private string connectionString = "Server=localhost\\MSSQLSERVER03;Database=MedicalSolutionBD;Trusted_Connection=True;TrustServerCertificate=True;"; // a mi LOCALHOST
         //para conectar con el usuario y la contraseña de la base de datos
 
         private static SqlDao? instance;
